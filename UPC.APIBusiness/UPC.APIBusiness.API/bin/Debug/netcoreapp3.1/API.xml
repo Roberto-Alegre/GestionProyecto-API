@@ -104,6 +104,16 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:API.StatisticsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.StatisticsController.GetListStatistics">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:API.CustomErrorException">
             <summary>
             Clase para el detalle de los errores en el Middleware

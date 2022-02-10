@@ -24,3 +24,16 @@ D:\Proyectos_RA\BackEnd\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netc
 D:\Proyectos_RA\BackEnd\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.csproj.CopyComplete
 D:\Proyectos_RA\BackEnd\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.dll
 D:\Proyectos_RA\BackEnd\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.pdb
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.deps.json
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.dll
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.pdb
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.csproj.AssemblyReference.cache
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.AssemblyInfoInputs.cache
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.AssemblyInfo.cs
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.csproj.CoreCompileInputs.cache
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.csproj.CopyComplete
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.dll
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBContext\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBContext.pdb

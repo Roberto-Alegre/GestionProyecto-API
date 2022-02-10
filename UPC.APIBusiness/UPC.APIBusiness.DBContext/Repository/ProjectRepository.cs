@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-//Agergar estas 4 referencias
+//Agregar estas 4 referencias
 using System.Data;
 using System.Linq;
 using DBEntity;
