@@ -8,6 +8,7 @@ namespace DBEntity
 	{
 		public int id_indicadores { get; set;}   
 		public int id_proyecto { get; set; }
+		public string nombre_proyecto{ get; set; }
 		public decimal monto_presupuestado { get; set; }
 		public decimal porcentaje_planificado { get; set; }
 		public decimal porcentaje_ejecutado { get; set; }
