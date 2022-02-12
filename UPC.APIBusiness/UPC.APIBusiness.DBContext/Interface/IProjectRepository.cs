@@ -10,5 +10,6 @@ namespace DBContext
         EntityBaseResponse GetProject(int id);
         EntityBaseResponse GetListProjects();
         EntityBaseResponse InsertProject(EntityProject project);
+        EntityBaseResponse UpdateProject(EntityProject project);
     }
 }

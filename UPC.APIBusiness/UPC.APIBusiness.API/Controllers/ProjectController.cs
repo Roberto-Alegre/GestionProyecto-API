@@ -18,6 +18,7 @@ namespace API
     /// </summary>
     [Produces("aplication/json")]
     [Route("api/project")]
+    [ApiController]
     public class ProjectController : Controller
     {
         /// <summary>
@@ -64,6 +65,24 @@ namespace API
 
         }
 
+        [Produces("application/json")]
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("insert")]
+        public ActionResult InsertProject(EntityProject project)
+        {
+            var ret = _projectRepository.InsertProject(project);
+            return Json(ret);
+        }
 
+        [Produces("application/json")]
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("update")]
+        public ActionResult UpdateProject(EntityProject project)
+        {
+            var ret = _projectRepository.UpdateProject(project);
+            return Json(ret);
+        }
     }
 }

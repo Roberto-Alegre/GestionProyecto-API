@@ -23,10 +23,10 @@ namespace DBContext
                     
                     var project = new EntityProject();
                     
-                    const string sql = "usp_ObtenerProyecto";
+                    const string sql = "usp_Obtener_Proyecto";
 
                     var p = new DynamicParameters();
-                    p.Add( name:"@IDPROYECTO", value:id, dbType:DbType.Int32, direction:ParameterDirection.Input);
+                    p.Add( name: "@id_proyecto", value:id, dbType:DbType.Int32, direction:ParameterDirection.Input);
 
                     project = db.Query<EntityProject>(
                             sql: sql,
@@ -110,7 +110,130 @@ namespace DBContext
 
         public EntityBaseResponse InsertProject(EntityProject project)
         {
-            throw new NotImplementedException();
+            var response = new EntityBaseResponse();
+
+            try
+            {
+
+                using(var db = GetSqlConnection())
+                {
+
+                    const string sql = "usp_Insertar_Proyecto";
+
+                    var p = new DynamicParameters();
+
+                    project.auditoria_usuario_ingreso = "1";
+
+                    p.Add(name: "@id_proyecto", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    p.Add(name: "@nombre_proyecto", value: project.nombre_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@fecha_inicio", value: project.fecha_inicio, dbType: DbType.Date, direction: ParameterDirection.Input);
+                    p.Add(name: "@fecha_termino", value: project.fecha_termino, dbType: DbType.Date, direction: ParameterDirection.Input);
+                    p.Add(name: "@descripcion_proyecto", value: project.descripcion_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@auditoria_usuario_ingreso", value: project.auditoria_usuario_ingreso, dbType: DbType.String, direction: ParameterDirection.Input);
+
+                    db.Query<EntityProject>(
+                            sql: sql,
+                            param: p,
+                            commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+
+                    var idproyecto = p.Get<int>("@id_proyecto");
+
+                    if (idproyecto > 0)
+                    {
+                        response.isuccess = true;
+                        response.errorcode = "0000";
+                        response.errormessage = string.Empty;
+                        response.data = new
+                        {
+                            id = idproyecto,
+                            nombre = project.nombre_proyecto
+                        };
+                    }
+                    else
+                    {
+                        response.isuccess = false;
+                        response.errorcode = "0000";
+                        response.errormessage = string.Empty;
+                        response.data = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.isuccess = false;
+                response.errorcode = "0000";
+                response.errormessage = ex.Message;
+                response.data = null;
+            }
+
+            return response;
+
         }
+
+        public EntityBaseResponse UpdateProject(EntityProject project)
+        {
+            var response = new EntityBaseResponse();
+
+            try
+            {
+
+                using (var db = GetSqlConnection())
+                {
+
+                    const string sql = "usp_Actualizar_Proyecto";
+
+                    var p = new DynamicParameters();
+
+                    project.auditoria_usuario_ingreso = "1";
+
+                    p.Add(name: "@id_proyecto", dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    p.Add(name: "@nombre_proyecto", value: project.nombre_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@fecha_inicio", value: project.fecha_inicio, dbType: DbType.Date, direction: ParameterDirection.Input);
+                    p.Add(name: "@fecha_termino", value: project.fecha_termino, dbType: DbType.Date, direction: ParameterDirection.Input);
+                    p.Add(name: "@descripcion_proyecto", value: project.descripcion_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@auditoria_usuario_modificacion", value: project.auditoria_usuario_ingreso, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@filas_afectadas", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                    db.Query<EntityProject>(
+                            sql: sql,
+                            param: p,
+                            commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+
+                    var filas_afectadas = p.Get<int>("@filas_afectadas");
+
+                    if (filas_afectadas > 0)
+                    {
+                        response.isuccess = true;
+                        response.errorcode = "0000";
+                        response.errormessage = string.Empty;
+                        response.data = new
+                        {
+                            id = project.id_proyecto,
+                            nombre = project.nombre_proyecto
+                        };
+                    }
+                    else
+                    {
+                        response.isuccess = false;
+                        response.errorcode = "0000";
+                        response.errormessage = string.Empty;
+                        response.data = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.isuccess = false;
+                response.errorcode = "0000";
+                response.errormessage = ex.Message;
+                response.data = null;
+            }
+
+            return response;
+
+        }
+
     }
 }
