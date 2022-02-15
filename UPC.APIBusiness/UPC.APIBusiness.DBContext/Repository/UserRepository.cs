@@ -10,18 +10,63 @@ namespace DBContext
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
-        public List<EntityUser> GetUsers()
+        public EntityBaseResponse Insert(EntityUser user)
         {
-            var returnEntity = new List<EntityUser>();
-            using (var db = GetSqlConnection())
+            var response = new EntityBaseResponse();
+
+            return response;
+
+        }
+
+        public EntityBaseResponse Login(EntitiyLogin login)
+        {
+            var response = new EntityBaseResponse();
+
+            try
             {
-                const string sql = @"usp_ObtenerDepartamentos";
+                using (var db = GetSqlConnection())
+                {
+                    var user = new EntityLoginResponse();
 
+                    const string sql = "usp_Obtener_Login";
 
-                returnEntity = db.Query<EntityUser>(sql,
-                    commandType: CommandType.StoredProcedure).ToList();
+                    var p = new DynamicParameters();
+
+                    p.Add(name: "@login", value: login.login, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@password", value: login.password, dbType: DbType.String, direction: ParameterDirection.Input);
+
+                    user = db.Query<EntityLoginResponse>(
+                        sql: sql,
+                        param: p,
+                        commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+
+                    if (user!= null)
+                    {
+                        response.isuccess = true;
+                        response.errorcode = "0000";
+                        response.errormessage = string.Empty;
+                        response.data = user;
+                    }
+                    else
+                    {
+                        response.isuccess = false;
+                        response.errorcode = "0001";
+                        response.errormessage = string.Empty;
+                        response.data = null;
+                    }
+
+                }
             }
-            return returnEntity;
+            catch(Exception ex)
+            {
+                response.isuccess = false;
+                response.errorcode = "0001";
+                response.errormessage = ex.Message;
+                response.data = null;
+            }
+
+            return response;
         }
     }
 }

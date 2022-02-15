@@ -6,18 +6,19 @@ namespace DBEntity
 {
     public class EntityUser : EntityBase
     {
-        public int IdUsuario { get; set; } // MEJORA: Reemplazar por Key, ID - Alias BD
-        public string NombreUsuario { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string Contrasenia { get; set; }
-        public string Documento { get; set; }
-        public DateTime FechaUltimoAcceso { get; set; }
-        public DateTime FechaInactivo { get; set; }
-        public string Correo { get; set; }
-        public string TipoAcceso { get; set; }
-        public int NroIntento { get; set; }
-        public int NroSesiones { get; set; }
-        public int IdUsuarioRolAplicacion { get; set; }
-    }
+		public int id_usuario { get; set; }
+		public string id_documento { get; set; }
+		public string apellidos { get; set; }
+		public string nombres { get; set;}
+		public string direccion { get; set;}
+		public string anexo { get; set;}
+		public string celular_1 { get; set;}
+		public string celular_2 { get; set;}
+		public string email { get; set;}
+		public string email_personal { get; set;}
+		public string area { get; set;}
+		public string puesto { get; set;}
+		public string login { get; set;}
+		public string password { get; set;}
+	}
 }

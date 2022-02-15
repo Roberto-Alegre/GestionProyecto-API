@@ -122,8 +122,6 @@ namespace DBContext
 
                     var p = new DynamicParameters();
 
-                    project.auditoria_usuario_ingreso = "1";
-
                     p.Add(name: "@id_proyecto", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     p.Add(name: "@nombre_proyecto", value: project.nombre_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
                     p.Add(name: "@fecha_inicio", value: project.fecha_inicio, dbType: DbType.Date, direction: ParameterDirection.Input);
@@ -185,9 +183,7 @@ namespace DBContext
 
                     var p = new DynamicParameters();
 
-                    project.auditoria_usuario_ingreso = "1";
-
-                    p.Add(name: "@id_proyecto", dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    p.Add(name: "@id_proyecto", value: project.id_proyecto, dbType: DbType.Int32, direction: ParameterDirection.Input);
                     p.Add(name: "@nombre_proyecto", value: project.nombre_proyecto, dbType: DbType.String, direction: ParameterDirection.Input);
                     p.Add(name: "@fecha_inicio", value: project.fecha_inicio, dbType: DbType.Date, direction: ParameterDirection.Input);
                     p.Add(name: "@fecha_termino", value: project.fecha_termino, dbType: DbType.Date, direction: ParameterDirection.Input);

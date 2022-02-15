@@ -55,6 +55,7 @@ namespace API
         /// <param name="id"></param>
         /// <returns></returns>
         [Produces("application/json")]
+        //[Authorize]
         [AllowAnonymous]
         [HttpGet]
         [Route("getproject")]
@@ -66,21 +67,38 @@ namespace API
         }
 
         [Produces("application/json")]
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("insert")]
         public ActionResult InsertProject(EntityProject project)
         {
+            var identity = User.Identity as ClaimsIdentity;
+            IEnumerable<Claim> claims = identity.Claims;
+
+            var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
+            var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
+
+            project.auditoria_usuario_ingreso = userid;
+
             var ret = _projectRepository.InsertProject(project);
             return Json(ret);
         }
 
         [Produces("application/json")]
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         [Route("update")]
         public ActionResult UpdateProject(EntityProject project)
         {
+
+            var identity = User.Identity as ClaimsIdentity;
+            IEnumerable<Claim> claims = identity.Claims;
+
+            var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
+            var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
+
+            project.auditoria_usuario_ingreso = userid;
+
             var ret = _projectRepository.UpdateProject(project);
             return Json(ret);
         }
