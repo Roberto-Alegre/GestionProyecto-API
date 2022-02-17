@@ -143,7 +143,8 @@ namespace DBContext
                         response.errormessage = string.Empty;
                         response.data = new
                         {
-                            id = idinteresadosproyecto
+                            id = idinteresadosproyecto,
+                            id_project = stakeholder.id_proyecto
                         };
                     }
                     else
