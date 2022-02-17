@@ -76,6 +76,122 @@
             
             </summary>
         </member>
+        <member name="F:API.ActivityController._activityRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityController.#ctor(DBContext.IActivityRepository)">
+            <summary>
+            
+            </summary>
+            <param name="activityRepository"></param>
+        </member>
+        <member name="M:API.ActivityController.GetListActivity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityController.GetActivity(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.ActivityProjectController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:API.ActivityProjectController._activityprojectRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityProjectController.#ctor(DBContext.IActivityProjectRepository)">
+            <summary>
+            
+            </summary>
+            <param name="activityprojectRepository"></param>
+        </member>
+        <member name="M:API.ActivityProjectController.GetListActivityProjects(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityProjectController.GetActivityProject(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.ActivityTrackController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:API.ActivityTrackController._activitytrackRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityTrackController.#ctor(DBContext.IActivityTrackRepository)">
+            <summary>
+            
+            </summary>
+            <param name="activitytrackRepository"></param>
+        </member>
+        <member name="M:API.ActivityTrackController.GetListActivityTrack(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.ActivityTrackController.GetActivityTrack(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:API.CostController._costRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.CostController.#ctor(DBContext.ICostRepository)">
+            <summary>
+            
+            </summary>
+            <param name="costRepository"></param>
+        </member>
+        <member name="M:API.CostController.GetListCost">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.CostController.GetCost(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="F:API.CostProjectController._costprojectRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.CostProjectController.#ctor(DBContext.ICostProjectRepository)">
+            <summary>
+            
+            </summary>
+            <param name="costprojectRepository"></param>
+        </member>
+        <member name="M:API.CostProjectController.GetListCostProject(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:API.ProjectController">
             <summary>
             
@@ -102,6 +218,35 @@
             
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.StakeholderController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:API.StakeholderController._stakeholderRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.StakeholderController.#ctor(DBContext.IStakeholderRepository)">
+            <summary>
+            
+            </summary>
+            <param name="stakeholderRepository"></param>
+        </member>
+        <member name="M:API.StakeholderController.GetListUsuarios">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.StakeholderController.GetListStakeholder(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id_project"></param>
             <returns></returns>
         </member>
         <member name="T:API.StatisticsController">

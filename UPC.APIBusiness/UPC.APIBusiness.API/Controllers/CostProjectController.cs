@@ -1,38 +1,39 @@
-﻿using DBContext;
-using DBEntity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using NSwag.Annotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+//Agregar estas referencias
+using DBContext;
+using DBEntity;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using NSwag.Annotations;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace API
 {
-    /// <summary>
-    /// 
-    /// </summary>
     [Produces("aplication/json")]
-    [Route("api/project")]
+    [Route("api/costproject")]
     [ApiController]
-    public class ProjectController : Controller
+
+    public class CostProjectController : Controller
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        protected readonly IProjectRepository _projectRepository;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="projectRepository"></param>
-        public ProjectController(IProjectRepository projectRepository)
+        protected readonly ICostProjectRepository _costprojectRepository;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="costprojectRepository"></param>
+        public CostProjectController(ICostProjectRepository costprojectRepository)
         {
-            _projectRepository = projectRepository;
+            _costprojectRepository = costprojectRepository;
         }
 
         /// <summary>
@@ -41,36 +42,33 @@ namespace API
         [Produces("application/json")]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getlistprojects")]
-        public ActionResult GetListProjects()
+        [Route("getlistcostproject")]
+        public ActionResult GetListCostProject(int id_proyecto )
         {
-            var ret = _projectRepository.GetListProjects();
+            
+            var ret = _costprojectRepository.GetListCostProject(id_proyecto);
             return Json(ret);
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [Produces("application/json")]
-        //[Authorize]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getproject")]
-        public ActionResult GetProject(int id)
+        [Route("getcostproject")]
+        public ActionResult GetCostProject(int id_costo)
         {
-            var ret = _projectRepository.GetProject(id);
+
+            var ret = _costprojectRepository.GetCostProject(id_costo);
             return Json(ret);
 
         }
 
         [Produces("application/json")]
+        //[AllowAnonymous]
         [Authorize]
         [HttpPost]
         [Route("insert")]
-        public ActionResult InsertProject(EntityProject project)
+        public ActionResult InsertCostProject(EntityCostProject costproject)
         {
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
@@ -78,18 +76,17 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_ingreso = int.Parse(userid);
+            costproject.auditoria_usuario_ingreso = int.Parse(userid);
 
-            var ret = _projectRepository.InsertProject(project);
+            var ret = _costprojectRepository.InsertCostProject(costproject);
             return Json(ret);
         }
 
         [Produces("application/json")]
         [Authorize]
-        //[AllowAnonymous]
         [HttpPost]
         [Route("update")]
-        public ActionResult UpdateProject(EntityProject project)
+        public ActionResult UpdateCostProject(EntityCostProject costproject)
         {
 
             var identity = User.Identity as ClaimsIdentity;
@@ -98,10 +95,11 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_modificacion = int.Parse(userid);
+            costproject.auditoria_usuario_modificacion = int.Parse(userid);
 
-            var ret = _projectRepository.UpdateProject(project);
+            var ret = _costprojectRepository.UpdateCostProject(costproject);
             return Json(ret);
         }
+
     }
 }

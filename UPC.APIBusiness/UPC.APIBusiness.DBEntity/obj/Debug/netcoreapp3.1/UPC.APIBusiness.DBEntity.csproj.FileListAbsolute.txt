@@ -29,10 +29,10 @@ D:\Proyectos_RA\BackEnd\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netco
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.deps.json
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb
-D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.AssemblyReference.cache
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.GeneratedMSBuildEditorConfig.editorconfig
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.AssemblyInfoInputs.cache
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.AssemblyInfo.cs
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.CoreCompileInputs.cache
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb
+D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.AssemblyReference.cache

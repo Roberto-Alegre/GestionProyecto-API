@@ -124,6 +124,12 @@ namespace API
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<IStatisticsRepository, StatisticsRespoitory>();
+            services.AddTransient<ICostRepository, CostRepository>();
+            services.AddTransient<IActivityRepository, ActivityRepository>();
+            services.AddTransient<ICostProjectRepository, CostProjectRepository>();
+            services.AddTransient<IActivityProjectRepository, ActivityProjectRepository>();
+            services.AddTransient<IActivityTrackRepository, ActivityTrackRepository>();
+            services.AddTransient<IStakeholderRepository, StakeholderRepository>();
 
             // ----------------------------------------------------------------
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();

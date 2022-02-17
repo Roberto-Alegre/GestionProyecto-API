@@ -1,15 +1,16 @@
-﻿using DBContext;
-using DBEntity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using NSwag.Annotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using DBContext;
+using DBEntity;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using NSwag.Annotations;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace API
 {
@@ -17,22 +18,23 @@ namespace API
     /// 
     /// </summary>
     [Produces("aplication/json")]
-    [Route("api/project")]
+    [Route("api/activityprojects")]
     [ApiController]
-    public class ProjectController : Controller
+
+    public class ActivityProjectController : Controller
     {
         /// <summary>
         /// 
         /// </summary>
-        protected readonly IProjectRepository _projectRepository;
+        protected readonly IActivityProjectRepository _activityprojectRepository;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="projectRepository"></param>
-        public ProjectController(IProjectRepository projectRepository)
+        /// <param name="activityprojectRepository"></param>
+        public ActivityProjectController(IActivityProjectRepository activityprojectRepository)
         {
-            _projectRepository = projectRepository;
+            _activityprojectRepository = activityprojectRepository;
         }
 
         /// <summary>
@@ -41,10 +43,10 @@ namespace API
         [Produces("application/json")]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getlistprojects")]
-        public ActionResult GetListProjects()
+        [Route("getlistactivityprojects")]
+        public ActionResult GetListActivityProjects(int id)
         {
-            var ret = _projectRepository.GetListProjects();
+            var ret = _activityprojectRepository.GetListActivityProject(id);
             return Json(ret);
 
         }
@@ -58,10 +60,10 @@ namespace API
         //[Authorize]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getproject")]
-        public ActionResult GetProject(int id)
+        [Route("getactivityproject")]
+        public ActionResult GetActivityProject(int id)
         {
-            var ret = _projectRepository.GetProject(id);
+            var ret = _activityprojectRepository.GetActivityProject(id);
             return Json(ret);
 
         }
@@ -70,7 +72,7 @@ namespace API
         [Authorize]
         [HttpPost]
         [Route("insert")]
-        public ActionResult InsertProject(EntityProject project)
+        public ActionResult InsertActivityProject(EntityActivityProject activityproject)
         {
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
@@ -78,30 +80,30 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_ingreso = int.Parse(userid);
+            activityproject.auditoria_usuario_ingreso = int.Parse(userid);
 
-            var ret = _projectRepository.InsertProject(project);
+            var ret = _activityprojectRepository.InsertActivityProject(activityproject);
             return Json(ret);
         }
 
         [Produces("application/json")]
         [Authorize]
-        //[AllowAnonymous]
         [HttpPost]
         [Route("update")]
-        public ActionResult UpdateProject(EntityProject project)
+        public ActionResult UpdateActivityProject(EntityActivityProject activityproject)
         {
-
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
 
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_modificacion = int.Parse(userid);
+            activityproject.auditoria_usuario_modificacion = int.Parse(userid);
 
-            var ret = _projectRepository.UpdateProject(project);
+            var ret = _activityprojectRepository.UpdateActivityProject(activityproject);
             return Json(ret);
         }
+
     }
+
 }

@@ -1,15 +1,16 @@
-﻿using DBContext;
-using DBEntity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using NSwag.Annotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using DBContext;
+using DBEntity;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using NSwag.Annotations;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace API
 {
@@ -17,22 +18,23 @@ namespace API
     /// 
     /// </summary>
     [Produces("aplication/json")]
-    [Route("api/project")]
+    [Route("api/activitytrack")]
     [ApiController]
-    public class ProjectController : Controller
+
+    public class ActivityTrackController : Controller
     {
         /// <summary>
         /// 
         /// </summary>
-        protected readonly IProjectRepository _projectRepository;
+        protected readonly IActivityTrackRepository _activitytrackRepository;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="projectRepository"></param>
-        public ProjectController(IProjectRepository projectRepository)
+        /// <param name="activitytrackRepository"></param>
+        public ActivityTrackController(IActivityTrackRepository activitytrackRepository)
         {
-            _projectRepository = projectRepository;
+            _activitytrackRepository = activitytrackRepository;
         }
 
         /// <summary>
@@ -41,10 +43,10 @@ namespace API
         [Produces("application/json")]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getlistprojects")]
-        public ActionResult GetListProjects()
+        [Route("getlistactivitytrack")]
+        public ActionResult GetListActivityTrack(int id)
         {
-            var ret = _projectRepository.GetListProjects();
+            var ret = _activitytrackRepository.GetListActivityTrack(id);
             return Json(ret);
 
         }
@@ -52,16 +54,13 @@ namespace API
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [Produces("application/json")]
-        //[Authorize]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getproject")]
-        public ActionResult GetProject(int id)
+        [Route("getactivitytrack")]
+        public ActionResult GetActivityTrack(int id)
         {
-            var ret = _projectRepository.GetProject(id);
+            var ret = _activitytrackRepository.GetActivityTrack(id);
             return Json(ret);
 
         }
@@ -70,7 +69,7 @@ namespace API
         [Authorize]
         [HttpPost]
         [Route("insert")]
-        public ActionResult InsertProject(EntityProject project)
+        public ActionResult InsertActivityTrack(EntityActivityTrack activitytrack)
         {
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
@@ -78,18 +77,17 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_ingreso = int.Parse(userid);
+            activitytrack.auditoria_usuario_ingreso= int.Parse(userid);
 
-            var ret = _projectRepository.InsertProject(project);
+            var ret = _activitytrackRepository.InsertActivityTrack(activitytrack);
             return Json(ret);
         }
 
         [Produces("application/json")]
         [Authorize]
-        //[AllowAnonymous]
         [HttpPost]
         [Route("update")]
-        public ActionResult UpdateProject(EntityProject project)
+        public ActionResult UpdateActivityTrack(EntityActivityTrack activitytrack)
         {
 
             var identity = User.Identity as ClaimsIdentity;
@@ -98,10 +96,11 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_modificacion = int.Parse(userid);
+            activitytrack.auditoria_usuario_modificacion = int.Parse(userid);
 
-            var ret = _projectRepository.UpdateProject(project);
+            var ret = _activitytrackRepository.UpdateActivityTrack(activitytrack);
             return Json(ret);
         }
+
     }
 }

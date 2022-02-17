@@ -1,38 +1,40 @@
-﻿using DBContext;
-using DBEntity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using NSwag.Annotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+//Agregar estas referencias
+using DBContext;
+using DBEntity;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using NSwag.Annotations;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Threading.Tasks;
+
 
 namespace API
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
     [Produces("aplication/json")]
-    [Route("api/project")]
+    [Route("api/cost")]
     [ApiController]
-    public class ProjectController : Controller
+
+    public class CostController : Controller
     {
         /// <summary>
         /// 
         /// </summary>
-        protected readonly IProjectRepository _projectRepository;
+        protected readonly ICostRepository _costRepository;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="projectRepository"></param>
-        public ProjectController(IProjectRepository projectRepository)
+        /// <param name="costRepository"></param>
+        public CostController(ICostRepository costRepository)
         {
-            _projectRepository = projectRepository;
+            _costRepository = costRepository;
         }
 
         /// <summary>
@@ -41,10 +43,10 @@ namespace API
         [Produces("application/json")]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getlistprojects")]
-        public ActionResult GetListProjects()
+        [Route("getlistcost")]
+        public ActionResult GetListCost()
         {
-            var ret = _projectRepository.GetListProjects();
+            var ret = _costRepository.GetListCost();
             return Json(ret);
 
         }
@@ -58,10 +60,10 @@ namespace API
         //[Authorize]
         [AllowAnonymous]
         [HttpGet]
-        [Route("getproject")]
-        public ActionResult GetProject(int id)
+        [Route("getcost")]
+        public ActionResult GetCost(int id)
         {
-            var ret = _projectRepository.GetProject(id);
+            var ret = _costRepository.GetCost(id);
             return Json(ret);
 
         }
@@ -70,7 +72,7 @@ namespace API
         [Authorize]
         [HttpPost]
         [Route("insert")]
-        public ActionResult InsertProject(EntityProject project)
+        public ActionResult InsertCost(EntityCost cost)
         {
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
@@ -78,18 +80,17 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_ingreso = int.Parse(userid);
+            cost.auditoria_usuario_ingreso = int.Parse(userid);
 
-            var ret = _projectRepository.InsertProject(project);
+            var ret = _costRepository.InsertCost(cost);
             return Json(ret);
         }
 
         [Produces("application/json")]
         [Authorize]
-        //[AllowAnonymous]
         [HttpPost]
         [Route("update")]
-        public ActionResult UpdateProject(EntityProject project)
+        public ActionResult UpdateCost(EntityCost cost)
         {
 
             var identity = User.Identity as ClaimsIdentity;
@@ -98,10 +99,11 @@ namespace API
             var userid = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
             var userdi = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
 
-            project.auditoria_usuario_modificacion = int.Parse(userid);
+            cost.auditoria_usuario_modificacion = int.Parse(userid);
 
-            var ret = _projectRepository.UpdateProject(project);
+            var ret = _costRepository.UpdateCost(cost);
             return Json(ret);
         }
+
     }
 }

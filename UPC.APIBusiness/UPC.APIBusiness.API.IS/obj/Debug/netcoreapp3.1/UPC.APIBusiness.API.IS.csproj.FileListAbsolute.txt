@@ -48,7 +48,6 @@ D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\obj\Debug\netcoreapp3.1\UPC.APIBusiness.API.IS.csproj.AssemblyReference.cache
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\obj\Debug\netcoreapp3.1\UPC.APIBusiness.API.IS.GeneratedMSBuildEditorConfig.editorconfig
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\obj\Debug\netcoreapp3.1\UPC.APIBusiness.API.IS.AssemblyInfoInputs.cache
 D:\Proyectos_RA\BackEnd\GestionProyecto-API\UPC.APIBusiness\UPC.APIBusiness.API.IS\obj\Debug\netcoreapp3.1\UPC.APIBusiness.API.IS.AssemblyInfo.cs
